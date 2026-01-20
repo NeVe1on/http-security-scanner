@@ -10,17 +10,17 @@ def check_headers(url):
         print(f"\n проверка {url}")
         print("статус ответа:", r.status_code)
         issues = 0
-        if 'X-Frame-Oprions' not in headers:
-            print("Отсуствует X-Frame_Options (риск Clickjacking)")
+        if 'X-Frame-Options' not in headers:
+            print("Отсуствует X-Frame-Options (риск Clickjacking)")
             issues += 1
         else:
-            print("X-frame-Options:", headers['X-frame-Options'])
+            print("X-Frame-Options:", headers['X-Frame-Options'])
 
-        if 'Content-Securiti-Policy' not in headers:
+        if 'Content-Security-Policy' not in headers:
             print("отсуствует content-securiti-policy (риск XSS)")
             issues += 1
         else:
-            print("[!] Content-Securiti-Polisy присуствует")
+            print("[!] Content-Security-Polisy присуствует")
             print(f"\n[*] найдено проблем: {issues}")
 
         
